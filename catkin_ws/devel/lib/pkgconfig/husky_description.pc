@@ -1,0 +1,8 @@
+prefix=/home/lar-workstation-01/Slam/catkin_ws/devel
+
+Name: husky_description
+Description: Description of husky_description
+Version: 0.6.4
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

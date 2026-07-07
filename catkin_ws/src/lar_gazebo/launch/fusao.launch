@@ -1,0 +1,17 @@
+<launch>
+  <arg name="modo" default="odom" />
+
+  <rosparam command="load" file="$(find lar_gazebo)/config/ekf_$(arg modo).yaml" />
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" clear_params="true">
+    <remap from="odometry/filtered" to="/odometry/filtered"/>
+  </node>
+
+  <node if="$(eval modo == 'gps')" pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" clear_params="true">
+    <remap from="/imu/data" to="/imu/data"/>
+    <remap from="/gps/fix" to="/navsat/fix"/>
+    <remap from="/odometry/gps" to="/gps/odom"/>
+  </node>
+
+  <node pkg="topic_tools" type="relay" name="gt_relay" args="/gazebo/model_states /gt/odom" />
+</launch>

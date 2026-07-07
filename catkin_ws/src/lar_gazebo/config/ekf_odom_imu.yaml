@@ -1,0 +1,14 @@
+frequency: 30
+two_d_mode: true
+publish_tf: false
+odom_frame: odom
+base_link_frame: base_link
+world_frame: odom
+
+odom0: /husky_velocity_controller/odom
+# MUDANÇA AQUI: Removemos o 'true' da 6ª e 12ª posições
+odom0_config: [true, true, false, false, false, false, true, true, false, false, false, false, false, false, false]
+
+imu0: /imu/data
+# A IMU continua igual, sendo a única responsável por dizer para onde o robô vira
+imu0_config: [false, false, false, false, false, true, false, false, false, false, false, true, true, false, false]

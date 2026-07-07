@@ -1,0 +1,11 @@
+<launch>
+  <include file="$(find lar_gazebo)/launch/lar_world.launch" />
+
+  <env name="HUSKY_LIDAR_ENABLED" value="1"/>
+
+  <include file="$(find husky_gazebo)/launch/spawn_husky.launch">
+    <arg name="x" value="5.0"/>
+    <arg name="y" value="5.0"/>
+    <arg name="z" value="0.0"/>
+  </include>
+</launch>

@@ -1,0 +1,8 @@
+prefix=/home/lar-workstation-01/Slam/catkin_ws/devel
+
+Name: lar_gazebo
+Description: Description of lar_gazebo
+Version: 1.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

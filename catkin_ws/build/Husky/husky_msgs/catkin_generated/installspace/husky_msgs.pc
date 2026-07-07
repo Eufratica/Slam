@@ -1,0 +1,8 @@
+prefix=/home/lar-workstation-01/Slam/catkin_ws/install
+
+Name: husky_msgs
+Description: Description of husky_msgs
+Version: 0.6.4
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: std_msgs message_runtime

@@ -1,0 +1,2 @@
+Husky/husky_control:Husky/husky_description:Husky/husky_desktop:Husky/husky_gazebo:Husky/husky_msgs:Husky/husky_navigation:Husky/husky_simulator:Husky/husky_viz:lar_gazebo
+-DCATKIN_DEVEL_PREFIX=/home/lar-workstation-01/Slam/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/lar-workstation-01/Slam/catkin_ws/install -G Unix Makefiles
