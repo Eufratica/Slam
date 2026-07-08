@@ -136,6 +136,9 @@ A disparidade numérica observada na Tabela Quantitativa é um sintoma direto da
 Avaliando visualmente os mapas através de 6 critérios estabelecidos, observamos:
 #### 7.1. Análise do Gmapping
 ![Descrição da Imagem](mapa_gmapping.png)
+<p align="center">
+  <img src="mapa_gmapping.png" width="600" title="Desalinhamento do AMCL no RViz">
+</p>
 
 - Completude do Mapa: Conseguiu extrair o layout geral, porém demonstrou deficiência no fechamento de loops (loop closure), deixando as extremidades e quinas das salas inconclusivas.
 
