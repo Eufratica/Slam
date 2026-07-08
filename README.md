@@ -134,7 +134,7 @@ O principal ponto de atenção reside no RMSE de Orientação: o Gmapping induzi
 A disparidade numérica observada na Tabela Quantitativa é um sintoma direto da integridade estrutural (ou falta dela) das imagens .pgm geradas pelos algoritmos.
 
 Avaliando visualmente os mapas através de 6 critérios estabelecidos, observamos:
-
+![Descrição da Imagem](mapa_gmapping.png)
 #### 7.1. Análise do Gmapping
 - Completude do Mapa: Conseguiu extrair o layout geral, porém demonstrou deficiência no fechamento de loops (loop closure), deixando as extremidades e quinas das salas inconclusivas.
 
