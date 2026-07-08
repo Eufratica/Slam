@@ -44,3 +44,13 @@ Abaixo está a organização dos arquivos críticos para a reprodução deste ex
  ┣ 📂 scripts
  ┃ ┗ 🐍 analisar_rmse.py          # Script Python para extração e cálculo de métricas
  ┗ 📜 README.md                   # Documentação do projeto
+```
+
+## 3. Pré-requisitos e Dependências
+Para executar os *launch files* e o script de análise de dados, o sistema deve possuir:
+* Ubuntu 20.04 LTS com ROS Noetic instalado.
+* Pacotes ROS: `gazebo_ros`, `amcl`, `map_server`, `teleop_twist_keyboard`.
+* Python 3.8+ com as bibliotecas analíticas:
+
+```bash
+pip install pandas numpy bagpy
