@@ -136,26 +136,26 @@ A disparidade numérica observada na Tabela Quantitativa é um sintoma direto da
 Avaliando visualmente os mapas através de 6 critérios estabelecidos, observamos:
 
 #### 7.1. Análise do Gmapping
-Completude do Mapa: Conseguiu extrair o layout geral, porém demonstrou deficiência no fechamento de loops (loop closure), deixando as extremidades e quinas das salas inconclusivas.
+- Completude do Mapa: Conseguiu extrair o layout geral, porém demonstrou deficiência no fechamento de loops (loop closure), deixando as extremidades e quinas das salas inconclusivas.
 
-Regiões Desconhecidas: Elevada quantidade de "vazamentos" de pixels cinzas para áreas que deveriam ser navegáveis, reduzindo a clareza do corredor livre.
+- Regiões Desconhecidas: Elevada quantidade de "vazamentos" de pixels cinzas para áreas que deveriam ser navegáveis, reduzindo a clareza do corredor livre.
 
-Presença de Distorções e Paredes Desalinhadas: Este foi o seu pior aspecto. Devido à forte dependência da odometria das rodas (que sofrem deslizamento no simulador), ocorreu severo ghosting. As paredes ficaram espessas, borradas e duplicadas, perdendo a ortogonalidade original do cenário.
+- Presença de Distorções e Paredes Desalinhadas: Este foi o seu pior aspecto. Devido à forte dependência da odometria das rodas (que sofrem deslizamento no simulador), ocorreu severo ghosting. As paredes ficaram espessas, borradas e duplicadas, perdendo a ortogonalidade original do cenário.
 
-Obstáculos Falsos: O desalinhamento contínuo das paredes projetou pixels pretos erráticos no meio da sala, criando obstáculos virtuais inexistentes.
+- Obstáculos Falsos: O desalinhamento contínuo das paredes projetou pixels pretos erráticos no meio da sala, criando obstáculos virtuais inexistentes.
 
-Qualidade da Localização (AMCL): Baixa. Como as paredes desenhadas eram espessas e tortas, as leituras precisas do sensor Lidar físico não "encaixavam" no mapa durante a navegação. Isso fez a nuvem de partículas do AMCL dispersar rapidamente em busca de convergência, causando a instabilidade comprovada pelos 2.97m de desvio padrão.
+- Qualidade da Localização (AMCL): Baixa. Como as paredes desenhadas eram espessas e tortas, as leituras precisas do sensor Lidar físico não "encaixavam" no mapa durante a navegação. Isso fez a nuvem de partículas do AMCL dispersar rapidamente em busca de convergência, causando a instabilidade comprovada pelos 2.97m de desvio padrão.
 
 #### 7.2. Análise do Hector SLAM
-Completude do Mapa: Excepcional. Delineou todos os limites internos e externos do laboratório simulado sem apresentar falhas de fronteira.
+- Completude do Mapa: Excepcional. Delineou todos os limites internos e externos do laboratório simulado sem apresentar falhas de fronteira.
 
-Regiões Desconhecidas: Transições abruptas e corretas entre espaço livre (branco) e obstáculo (preto). Não há vazamento de áreas cinzas para os locais onde o robô transitou.
+- Regiões Desconhecidas: Transições abruptas e corretas entre espaço livre (branco) e obstáculo (preto). Não há vazamento de áreas cinzas para os locais onde o robô transitou.
 
-Presença de Distorções e Paredes Desalinhadas: Ausentes. Como o Hector SLAM ignora a odometria e utiliza técnicas modernas de otimização de scan matching na taxa de atualização do Lidar, as paredes geradas são finas, retas e perfeitamente congruentes com o Gazebo.
+- Presença de Distorções e Paredes Desalinhadas: Ausentes. Como o Hector SLAM ignora a odometria e utiliza técnicas modernas de otimização de scan matching na taxa de atualização do Lidar, as paredes geradas são finas, retas e perfeitamente congruentes com o Gazebo.
 
-Obstáculos Falsos: Mapa totalmente limpo; isento de marcações fantasmas nas áreas de navegação.
+- Obstáculos Falsos: Mapa totalmente limpo; isento de marcações fantasmas nas áreas de navegação.
 
-Qualidade da Localização (AMCL): Excelente. A alta fidelidade arquitetônica do mapa forneceu uma referência perfeita para o algoritmo AMCL. As leituras do laser casavam perfeitamente com os pixels pretos do mapa gerado, permitindo que as partículas se mantivessem extremamente concentradas e coladas ao footprint do robô.
+- Qualidade da Localização (AMCL): Excelente. A alta fidelidade arquitetônica do mapa forneceu uma referência perfeita para o algoritmo AMCL. As leituras do laser casavam perfeitamente com os pixels pretos do mapa gerado, permitindo que as partículas se mantivessem extremamente concentradas e coladas ao footprint do robô.
 
 ### 8. Conclusão
 Após a execução, processamento e análise técnica dos dados em ambiente simulado ROS/Gazebo, conclui-se que o algoritmo Hector SLAM produziu o melhor mapa. Sua capacidade de contornar os erros naturais da odometria utilizando scan matching de alta precisão foi fundamental.
