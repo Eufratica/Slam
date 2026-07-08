@@ -153,6 +153,7 @@ Avaliando visualmente os mapas através de 6 critérios estabelecidos, observamo
 <p align="center">
   <img src="mapa_hector_slam.png" width="600" title="Desalinhamento do AMCL no RViz">
 </p>
+
 - Completude do Mapa: Excepcional. Delineou todos os limites internos e externos do laboratório simulado sem apresentar falhas de fronteira.
 
 - Regiões Desconhecidas: Transições abruptas e corretas entre espaço livre (branco) e obstáculo (preto). Não há vazamento de áreas cinzas para os locais onde o robô transitou.
