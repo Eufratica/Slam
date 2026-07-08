@@ -135,7 +135,6 @@ A disparidade numérica observada na Tabela Quantitativa é um sintoma direto da
 
 Avaliando visualmente os mapas através de 6 critérios estabelecidos, observamos:
 #### 7.1. Análise do Gmapping
-![Descrição da Imagem](mapa_gmapping.png)
 <p align="center">
   <img src="mapa_gmapping.png" width="600" title="Desalinhamento do AMCL no RViz">
 </p>
@@ -151,7 +150,9 @@ Avaliando visualmente os mapas através de 6 critérios estabelecidos, observamo
 - Qualidade da Localização (AMCL): Baixa. Como as paredes desenhadas eram espessas e tortas, as leituras precisas do sensor Lidar físico não "encaixavam" no mapa durante a navegação. Isso fez a nuvem de partículas do AMCL dispersar rapidamente em busca de convergência, causando a instabilidade comprovada pelos 2.97m de desvio padrão.
 
 #### 7.2. Análise do Hector SLAM
-![Descrição da Imagem](mapa_hector_slam.png)
+<p align="center">
+  <img src="mapa_hector_slam.png" width="600" title="Desalinhamento do AMCL no RViz">
+</p>
 - Completude do Mapa: Excepcional. Delineou todos os limites internos e externos do laboratório simulado sem apresentar falhas de fronteira.
 
 - Regiões Desconhecidas: Transições abruptas e corretas entre espaço livre (branco) e obstáculo (preto). Não há vazamento de áreas cinzas para os locais onde o robô transitou.
