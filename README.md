@@ -51,6 +51,58 @@ Para executar os *launch files* e o script de análise de dados, o sistema deve 
 * Ubuntu 20.04 LTS com ROS Noetic instalado.
 * Pacotes ROS: `gazebo_ros`, `amcl`, `map_server`, `teleop_twist_keyboard`.
 * Python 3.8+ com as bibliotecas analíticas:
-
+  
 ```bash
 pip install pandas numpy bagpy
+```
+
+## 4. Metodologia de Execução
+
+Os experimentos foram conduzidos rigorosamente sob as mesmas condições para ambos os mapas. O roteiro de execução consiste em instanciar o mundo, carregar o mapa, inicializar o AMCL com *2D Pose Estimate*, movimentar o robô e gravar os tópicos necessários.
+
+### Passo 1: Inicialização do Ambiente
+Em um terminal, inicie a simulação do Husky no laboratório:
+```bash
+roslaunch lar_gazebo lar_husky_sim.launch
+```
+
+Passo 2: Inicialização do AMCL
+Em um segundo terminal, carregue o sistema de localização apontando para o mapa desejado (Gmapping ou Hector):
+
+```bash
+# Exemplo executando o mapa gerado pelo Hector SLAM
+roslaunch lar_gazebo amcl.launch map_file:=/caminho/absoluto/mapa_hector_final.yaml
+```
+No RViz, é estritamente necessário utilizar a ferramenta 2D Pose Estimate para fornecer a estimativa inicial e permitir a convergência das partículas antes do início do movimento.
+
+Passo 3: Coleta de Dados (Rosbag Record)
+Para registrar a disparidade entre a crença do robô e a realidade física, os tópicos de pose foram gravados em um terceiro terminal:
+
+```bash
+rosbag record -O comparacao_hector.bag /amcl_pose /gazebo/model_states
+```
+Passo 4: Teleoperação
+Movimente o robô pelo ambiente garantindo variações de translação e rotação:
+
+```bash
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+```
+5. Processamento de Dados e Cálculos
+O script analisar_rmse.py foi desenvolvido para ler nativamente as mensagens do ROS, alinhar as séries temporais (que possuem frequências de publicação distintas) utilizando pandas.merge_asof, e calcular as métricas exigidas.
+
+Formulação Matemática
+As seguintes equações foram implementadas no script para a avaliação do sistema:
+
+### Formulação Matemática
+As seguintes equações foram implementadas no script para a avaliação do sistema:
+
+**1. Erro Euclidiano de Posição (a cada instante $t$):**
+$$E_p(t) = \sqrt{(x_{amcl}(t) - x_{gaz}(t))^2 + (y_{amcl}(t) - y_{gaz}(t))^2}$$
+
+**2. RMSE (Root Mean Square Error) de Posição:**
+$$RMSE_p = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (E_p(t_i))^2}$$
+
+**3. Erro de Orientação (Yaw):**
+Diferença angular mapeada para o intervalo $[-\pi, \pi]$ utilizando quaternions convertidos para ângulos de Euler.
+
+
